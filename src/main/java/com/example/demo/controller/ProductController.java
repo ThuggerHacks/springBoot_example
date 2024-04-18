@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
-public class ProductController {
+public class ProductController extends BaseController {
     private final ProductService productService;
     private final UserService userService;
 
