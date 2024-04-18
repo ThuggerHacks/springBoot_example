@@ -15,5 +15,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
        registry.addInterceptor(new CustomInterceptor())
                .addPathPatterns("/api/users");
 
+//        registry.addInterceptor(new CustomInterceptor2())
+//                .addPathPatterns("/api/products");
+
     }
 }

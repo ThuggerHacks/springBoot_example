@@ -13,7 +13,7 @@ public class CustomInterceptor implements HandlerInterceptor {
                 "next interceptor or function");
 //        response.setStatus(HttpStatus.UNAUTHORIZED.value());
 //        response.getWriter().write("Un authorized"); //to send response messages on whatever error
-      return true;
+      return true; 
     }
 
     @Override
