@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,8 @@ public class UserController extends BaseController {
     }
 
     @GetMapping("/users")
-    public List<User> getUsers() {
+    public List<User> getUsers(HttpServletRequest request) {
+        System.out.println(request.getAttribute("msg")); //receiving from interceptor
         return userService.findAll();
     }
 
