@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -23,6 +24,10 @@ public class User {
     //end validations
     @Column(name = "name",nullable = false)
     private String username;
+
+    @Column(name = "password")
+    @NotEmpty(message = "Senha eh obrigatorio")
+    private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnoreProperties("user")
@@ -64,5 +69,13 @@ public class User {
 
     public void setSale(List<Sale> sale) {
         this.sale = sale;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

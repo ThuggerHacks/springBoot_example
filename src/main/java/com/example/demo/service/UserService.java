@@ -3,6 +3,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.util.HashingUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,15 @@ public class UserService {
             return u;
         }
 
+        return null;
+    }
+
+    public Optional<User> Login(String username, String password) {
+        Optional<User> user = this.userRepository.findByUsername(username);
+        if(user.isPresent()) if (HashingUtil.checkPassword(password, user.get().getPassword())) {
+            Optional<User> user1 = Optional.of(user.get());
+            return user1;
+        }
         return null;
     }
 }
